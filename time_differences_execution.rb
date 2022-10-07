@@ -102,5 +102,26 @@ def second_anagram?(first_str, second_str)
 
 end
 
-p second_anagram?('elivs','lives')
-p second_anagram?('gizmo','sally')
+# p second_anagram?('elivs','lives')
+# p second_anagram?('gizmo','sally')
+
+def third_anagram?(first_str, second_str)
+  first_str.chars.sort == second_str.chars.sort
+
+end
+
+# p third_anagram?('elivs','lives')
+# p third_anagram?('gizmo','sally')
+
+
+def fourth_anagram?(first_str, second_str)
+  count = Hash.new(0)
+
+  first_str.each_char {|char| count[char] += 1}
+  second_str.each_char {|char| count[char] -= 1}
+
+  count.values.all? {|val| val == 0}
+end
+
+p fourth_anagram?('elivs','lives')
+p fourth_anagram?('gizmo','sally')
