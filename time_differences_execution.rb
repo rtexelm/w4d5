@@ -12,3 +12,11 @@ def my_min(arr)
 end
 
 p my_min([0,3,5,4,-5,10,1,90])
+
+def my_min_faster(arr)
+  arr.inject {|acc, ele| ele < acc ? ele : acc}
+end
+
+p my_min_faster([0,3,5,4,-5,10,1,90])
+
+
