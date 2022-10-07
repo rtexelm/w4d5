@@ -55,5 +55,35 @@ def largest_contiguous_subsum(arr)
   largest
 end
 
-p largest_contiguous_subsum([-6, 9, -4, 2, 8, -10, 3, 9])
+# p largest_contiguous_subsum([-6, 9, -4, 2, 8, -10, 3, 9])
+
+def first_anagram?(first_str, second_str)
+  chars_first_str = first_str.chars
+  perms = permutations(chars_first_str)
+
+  perms.each do |str_combo|
+    if second_str == str_combo.join
+      return true
+    end
+    
+  end
+  return false
+
+end
+
+def permutations(array) # O(n!)
+  return [array] if array.length <= 1
+
+  perms_without_first = permutations(array.drop(1))
+
+  perms_without_first.inject([]) do |all_perms, perm|
+    all_perms + (0..perm.size).map do |i| 
+      perm.take(i) + [array.first] + perm.drop(i)
+    end
+  end
+end
+
+p first_anagram?('gizmo','sally')
+p first_anagram?('elivs','lives')
+
 
