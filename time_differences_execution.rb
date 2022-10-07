@@ -83,7 +83,24 @@ def permutations(array) # O(n!)
   end
 end
 
-p first_anagram?('gizmo','sally')
-p first_anagram?('elivs','lives')
+# p first_anagram?('gizmo','sally')
+# p first_anagram?('elivs','lives')
 
 
+def second_anagram?(first_str, second_str)
+  first_chars_arr = first_str.chars
+  second_chars_arr = second_str.chars
+
+  first_chars_arr.each do |char|
+    ss_index = second_chars_arr.find_index(char)
+    if ss_index != nil
+      second_chars_arr.delete_at ss_index
+    end
+  end
+
+  second_chars_arr.empty?
+
+end
+
+p second_anagram?('elivs','lives')
+p second_anagram?('gizmo','sally')
